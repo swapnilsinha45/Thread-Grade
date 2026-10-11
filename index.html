@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#111827" />
+  <meta name="description" content="ThreadGrade — an interactive prototype for AI-assisted textile waste grading, lot traceability and buyer routing." />
+  <title>ThreadGrade — Textile Value Recovery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><div class="brand-mark"><span></span><span></span><span></span></div><div><strong>ThreadGrade</strong><small>TEXTILE VALUE RECOVERY</small></div></div>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="nav">
+        <button class="nav-item active" data-page="overview"><span class="nav-icon">◫</span> Overview</button>
+        <button class="nav-item" data-page="grade"><span class="nav-icon">⌁</span> Grade a lot <span class="nav-badge">NEW</span></button>
+        <button class="nav-item" data-page="lots"><span class="nav-icon">▤</span> Lot records</button>
+        <button class="nav-item" data-page="buyers"><span class="nav-icon">⇄</span> Buyer lanes</button>
+        <button class="nav-item" data-page="finance"><span class="nav-icon">₹</span> Lot-backed finance</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="pilot-card"><div class="pilot-dot"></div><div><strong>Prototype environment</strong><small>Sample data · No live integrations</small></div></div>
+        <div class="user-row"><div class="avatar">TG</div><div><strong>Textile pilot</strong><small>Grader workspace</small></div><span class="more">···</span></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar"><button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button><div class="breadcrumb">Workspace <span>/</span> <b id="crumb">Overview</b></div><div class="top-actions"><span class="demo-pill"><i></i> DEMO MODE</span><button class="icon-button" id="helpBtn" title="About this prototype">?</button><div class="top-avatar">TG</div></div></header>
+
+      <section class="page active" id="page-overview">
+        <div class="page-heading"><div><div class="eyebrow">MONDAY, OCTOBER 12, 2026 <span class="live-dot"></span> PILOT WORKSPACE</div><h1>Waste in. <em>Value out.</em></h1><p class="subheading">Turn textile offcuts into buyer-ready, traceable lots.</p></div><button class="btn btn-primary" data-go="grade"><span>＋</span> Grade a new lot</button></div>
+        <div class="notice"><span class="notice-icon">✳</span><div><strong>ThreadGrade in action</strong><p>AI proposes a grade. A human confirms it. Each lot gets a record and a route to the right buyer lane.</p></div><button class="notice-link" data-go="grade">Try the workflow <span>→</span></button></div>
+        <div class="metric-grid">
+          <div class="metric-card"><div class="metric-top"><span>Material logged</span><span class="metric-icon yellow">▤</span></div><div class="metric-value">12,480 <small>kg</small></div><div class="metric-foot"><span class="trend">↑ 12.4%</span> vs. previous period</div><div class="mini-bars"><i style="height:35%"></i><i style="height:49%"></i><i style="height:41%"></i><i style="height:64%"></i><i style="height:56%"></i><i style="height:80%"></i><i style="height:100%"></i></div></div>
+          <div class="metric-card"><div class="metric-top"><span>Grade-confirmed lots</span><span class="metric-icon blue">✓</span></div><div class="metric-value">86 <small>lots</small></div><div class="metric-foot"><span class="trend">↑ 8 this week</span> human-confirmed</div><div class="progress-line"><span style="width:78%"></span></div><div class="progress-caption"><span>Grading progress</span><b>78%</b></div></div>
+          <div class="metric-card"><div class="metric-top"><span>Indicative value uplift</span><span class="metric-icon green">↗</span></div><div class="metric-value">₹1.72 <small>L</small></div><div class="metric-foot"><span class="trend">Illustrative</span> vs. mixed-sack baseline</div><div class="metric-note">Modelled from demo lot prices</div></div>
+          <div class="metric-card"><div class="metric-top"><span>Lots ready to route</span><span class="metric-icon purple">⇄</span></div><div class="metric-value">14 <small>lots</small></div><div class="metric-foot"><span class="status-dot"></span> Awaiting buyer-lane match</div><button class="text-link" data-go="buyers">View routing options →</button></div>
+        </div>
+        <div class="content-grid">
+          <div class="panel recent-panel"><div class="panel-heading"><div><h2>Recent lots</h2><p>Latest material records in the pilot</p></div><button class="btn btn-secondary btn-sm" data-go="lots">View all <span>→</span></button></div>
+            <div class="table-wrap"><table><thead><tr><th>LOT ID</th><th>MATERIAL</th><th>WEIGHT</th><th>GRADE</th><th>STATUS</th></tr></thead><tbody id="recentLots"></tbody></table></div>
+          </div>
+          <div class="panel lanes-panel"><div class="panel-heading"><div><h2>Two-lane routing</h2><p>Match material to the right market</p></div><span class="small-tag">MODEL</span></div>
+            <div class="lane-card bulk"><div class="lane-head"><div class="lane-symbol">▦</div><div><strong>Bulk lane</strong><small>Standard grades · Sealed bids</small></div><span class="lane-share">~80%</span></div><div class="grade-price-grid"><div><small>G1</small><b>₹65</b></div><div><small>G2</small><b>₹45</b></div><div><small>G3</small><b>₹30</b></div><div><small>G4</small><b>₹18</b></div></div><div class="lane-bottom">Mechanical recyclers <span>→</span></div></div>
+            <div class="lane-card custom"><div class="lane-head"><div class="lane-symbol">✳</div><div><strong>Custom lane</strong><small>Exact buyer specifications</small></div><span class="lane-share">~20%</span></div><div class="custom-copy">Match shade, GSM and blend to open orders from upcyclers and brand programmes.</div><div class="lane-bottom">Potential premium <b>+₹8/kg*</b></div></div>
+            <p class="footnote">*Illustrative assumptions from the submitted concept; validate in a live pilot.</p>
+          </div>
+        </div>
+        <div class="bottom-banner"><div class="banner-icon">✦</div><div><strong>From mixed sacks to material intelligence.</strong><p>Standardised grades create a shared language between factories and recyclers.</p></div><button class="btn btn-dark" data-go="grade">Explore grading <span>→</span></button></div>
+      </section>
+
+      <section class="page" id="page-grade">
+        <div class="page-heading"><div><div class="eyebrow">WORKFLOW / STEP 01–04</div><h1>Grade a <em>new lot.</em></h1><p class="subheading">Simulate how a textile offcut becomes a buyer-ready, traceable lot.</p></div><span class="prototype-label">INTERACTIVE PROTOTYPE</span></div>
+        <div class="stepper"><div class="step active" data-step-indicator="1"><span>1</span><div><b>Identify</b><small>Material input</small></div></div><div class="step-line"></div><div class="step" data-step-indicator="2"><span>2</span><div><b>Confirm</b><small>Human review</small></div></div><div class="step-line"></div><div class="step" data-step-indicator="3"><span>3</span><div><b>Route</b><small>Buyer lane</small></div></div><div class="step-line"></div><div class="step" data-step-indicator="4"><span>4</span><div><b>Record</b><small>Lot passport</small></div></div></div>
+        <div class="grade-layout">
+          <div class="panel input-panel"><div class="panel-heading"><div><h2>Lot details</h2><p>Enter a sample batch or use a demo lot</p></div><span class="required-note">* Required</span></div>
+            <label class="field-label">Factory / source <span>*</span><input id="factory" value="Tiruppur Knitwear Unit 04" placeholder="e.g. Factory name" /></label>
+            <div class="field-row"><label class="field-label">Material type <span>*</span><select id="material"><option value="Cotton cutting waste">Cotton cutting waste</option><option value="Cotton-poly blend">Cotton-poly blend</option><option value="Polyester offcuts">Polyester offcuts</option><option value="Mixed textile scraps">Mixed textile scraps</option></select></label><label class="field-label">Weight (kg) <span>*</span><input id="weight" type="number" min="1" value="250" /></label></div>
+            <div class="field-row"><label class="field-label">Colour family<select id="colour"><option>White / natural</option><option>Light shades</option><option>Dark shades</option><option>Mixed colours</option><option>Printed / patterned</option></select></label><label class="field-label">Contamination<select id="contamination"><option value="Low">Low</option><option value="Medium">Medium</option><option value="High">High</option></select></label></div>
+            <label class="field-label">Purchase order / fabric spec <input id="po" value="PO-TK-2048 · 100% cotton, light shades" placeholder="Add PO or fabric spec" /></label>
+            <div class="upload-zone" id="uploadZone"><div class="upload-symbol">↑</div><div><b>Attach a material photo</b><small>Optional · JPG or PNG · demo only</small></div><label class="btn btn-secondary btn-sm">Choose image<input id="photoInput" type="file" accept="image/png,image/jpeg" hidden /></label><div id="fileName" class="file-name"></div></div>
+            <button class="btn btn-primary btn-full" id="runGrade">✦ Run AI pre-sort <span>→</span></button><p class="form-disclaimer">Demo simulation: no image model or fibre-testing device is connected.</p>
+          </div>
+          <div class="panel results-panel"><div class="panel-heading"><div><h2>Grading result</h2><p>AI proposal · Human confirmation required</p></div><span class="status-chip pending" id="gradeStatus">Awaiting input</span></div>
+            <div class="empty-state" id="emptyState"><div class="empty-illustration"><div class="fabric-stack"><i></i><i></i><i></i><i></i></div><span>✦</span></div><h3>Your grade card will appear here</h3><p>Enter the lot details and run the simulated pre-sort to see a proposed grade, confidence indicators and routing recommendation.</p></div>
+            <div id="resultState" class="hidden"><div class="grade-result-top"><div class="grade-stamp" id="gradeStamp">G2</div><div class="grade-title"><small>PROPOSED GRADE</small><h3 id="gradeName">Sorted cotton · Light</h3><p id="gradeDescription">High suitability for bulk recycling</p></div><div class="confidence"><b id="confidenceValue">92%</b><small>Rule-match<br/>score*</small></div></div>
+              <div class="result-specs"><div><small>Fibre profile</small><b id="fibreProfile">Cotton-rich</b></div><div><small>Colour</small><b id="resultColour">White / natural</b></div><div><small>Contamination</small><b id="resultContamination">Low</b></div><div><small>Weight</small><b id="resultWeight">250 kg</b></div></div>
+              <div class="score-heading"><b>Custom-fit score</b><strong id="scoreValue">82 / 100</strong></div><div class="score-bar"><span id="scoreBar" style="width:82%"></span></div><div class="score-breakdown"><div><span>Fibre suitability <small>35%</small></span><b id="scoreFibre">31/35</b></div><div><span>Buyer specification <small>30%</small></span><b id="scoreBuyer">26/30</b></div><div><span>Premium potential <small>20%</small></span><b id="scorePremium">15/20</b></div><div><span>Lead-time fit <small>15%</small></span><b id="scoreLead">10/15</b></div></div>
+              <div class="human-check"><div class="human-icon">✓</div><div><b>Human review required</b><p>AI proposes; the trained grader makes the final decision. Fibre composition must be validated where needed.</p></div></div>
+              <div class="result-actions"><button class="btn btn-secondary" id="editGrade">Adjust details</button><button class="btn btn-primary" id="confirmGrade">Confirm grade & route <span>→</span></button></div>
+            </div>
+            <div id="confirmedState" class="hidden"><div class="confirmed-banner"><div class="confirmed-check">✓</div><div><h3>Grade confirmed</h3><p>Human-confirmed demo record created. Next, route this lot to a buyer lane.</p></div></div><div class="route-preview" id="routePreview"></div><button class="btn btn-primary btn-full" id="createPassport">Create lot passport <span>→</span></button></div>
+          </div>
+        </div>
+        <div class="disclaimer-box"><b>Responsible AI note</b><span>The displayed grade and scores are rule-based demo outputs, not real AI predictions, laboratory results or certified fibre composition. A production system would require validated models, calibrated tests and independent quality checks.</span></div>
+      </section>
+
+      <section class="page" id="page-lots">
+        <div class="page-heading"><div><div class="eyebrow">TRACEABILITY / MATERIAL RECORDS</div><h1>Lot <em>records.</em></h1><p class="subheading">Every batch gets an identity, grade history and destination record.</p></div><button class="btn btn-primary" data-go="grade">＋ Create lot</button></div>
+        <div class="filter-row"><div class="searchbox">⌕ <input id="lotSearch" placeholder="Search lot ID, factory or material…" /></div><select id="lotFilter"><option value="all">All statuses</option><option value="Confirmed">Confirmed</option><option value="Pending review">Pending review</option><option value="Routed">Routed</option></select><span class="results-count" id="lotCount">4 records</span></div>
+        <div class="panel"><div class="table-wrap"><table class="lots-table"><thead><tr><th>LOT ID / CREATED</th><th>SOURCE & MATERIAL</th><th>WEIGHT</th><th>GRADE</th><th>ROUTE</th><th>STATUS</th><th></th></tr></thead><tbody id="allLots"></tbody></table></div></div>
+        <div class="info-callout"><span>ⓘ</span><div><b>Traceability, not a certification claim.</b><p>A lot passport records submitted details, human confirmations and transaction events. It does not independently certify material composition or downstream environmental outcomes.</p></div></div>
+      </section>
+
+      <section class="page" id="page-buyers">
+        <div class="page-heading"><div><div class="eyebrow">MARKET ACCESS / ROUTING</div><h1>Two lanes. <em>Better fit.</em></h1><p class="subheading">Standard grades flow to bulk demand. Specific lots can qualify for custom orders.</p></div><span class="prototype-label">ILLUSTRATIVE PRICES</span></div>
+        <div class="lane-hero-grid"><div class="lane-hero bulk-hero"><div class="lane-hero-top"><div class="lane-symbol large">▦</div><span class="lane-tag">BASE CASE</span></div><h2>Bulk lane</h2><p>Standardised grades go to sealed-bid auctions for mechanical recyclers. This is the base route for most kilograms.</p><div class="bulk-grade-list"><div><span><i class="grade-dot g1"></i> G1 · Premium sorted</span><b>₹65/kg</b></div><div><span><i class="grade-dot g2"></i> G2 · Good sorted</span><b>₹45/kg</b></div><div><span><i class="grade-dot g3"></i> G3 · Mixed usable</span><b>₹30/kg</b></div><div><span><i class="grade-dot g4"></i> G4 · Low grade</span><b>₹18/kg</b></div></div><div class="hero-foot"><span>Illustrative bid reference</span><b>~80% of volume*</b></div></div>
+          <div class="lane-hero custom-hero"><div class="lane-hero-top"><div class="lane-symbol large">✳</div><span class="lane-tag">OPTIONAL UPSIDE</span></div><h2>Custom lane</h2><p>Lots are matched to an open buyer order by exact shade, GSM, fibre blend and required quantity.</p><div class="custom-match-card"><div class="match-top"><div><small>OPEN BUYER SPEC</small><b>Light natural · Cotton-rich</b></div><span class="match-score">82 / 100</span></div><div class="match-attributes"><span>Fibre profile ✓</span><span>Shade ✓</span><span>Volume ✓</span></div><div class="match-price"><span>Potential premium</span><b>+₹8/kg*</b></div></div><div class="hero-foot"><span>Demand-led, not guaranteed</span><b>~20% of volume*</b></div></div></div>
+        <div class="panel routing-panel"><div class="panel-heading"><div><h2>Try the routing calculator</h2><p>Adjust a lot's score to see the recommended lane.</p></div></div><div class="routing-calculator"><div class="route-score-control"><label for="routeScore">Custom-fit score <strong id="routeScoreValue">72 / 100</strong></label><input type="range" min="0" max="100" value="72" id="routeScore"/><div class="range-labels"><span>0 · Poor fit</span><span>70 · Threshold</span><span>100 · Strong fit</span></div></div><div class="route-outcome" id="routeOutcome"><span class="route-icon">✳</span><div><small>RECOMMENDED ROUTE</small><h3>Custom lane</h3><p>Score meets the ≥70 threshold. Check the buyer's open specification before confirming.</p></div><span class="outcome-arrow">→</span></div></div></div>
+        <p class="footnote wide-footnote">All grade prices, lane splits and premiums shown here are illustrative assumptions from the submitted concept and require market validation.</p>
+      </section>
+
+      <section class="page" id="page-finance">
+        <div class="page-heading"><div><div class="eyebrow">WORKING CAPITAL / LOT-BACKED FINANCE</div><h1>Make verified lots <em>finance-ready.</em></h1><p class="subheading">Illustrate how an accepted bid and traceable lot record could support an invoice-finance request.</p></div><span class="prototype-label">SIMULATION ONLY</span></div>
+        <div class="finance-banner"><div class="finance-banner-icon">₹</div><div><h2>From confirmed lot to finance request</h2><p>A grade certificate and buyer-accepted bid can help assemble evidence for a lender. Funding remains subject to lender checks, eligibility and approval.</p></div></div>
+        <div class="finance-grid"><div class="panel finance-input"><div class="panel-heading"><div><h2>Estimate a lot-backed advance</h2><p>Use an illustrative bid and advance ratio.</p></div></div><label class="field-label">Confirmed lot<select id="financeLot"></select></label><label class="field-label">Accepted bid (₹/kg)<input type="number" id="financeBid" value="45" min="1" /></label><label class="field-label">Illustrative advance rate<input type="range" id="ltv" min="30" max="70" value="50" /><div class="range-labels"><span>30%</span><b id="ltvValue">50%</b><span>70%</span></div></label><button class="btn btn-primary btn-full" id="calculateFinance">Calculate illustrative advance</button><p class="form-disclaimer">Not a credit offer, loan approval or financial advice.</p></div><div class="panel finance-result"><div class="finance-result-head"><span>INDICATIVE WORKING CAPITAL</span><span class="status-chip pending">Estimate only</span></div><div class="finance-amount" id="advanceAmount">₹5,625</div><p class="finance-equation" id="financeEquation">250 kg × ₹45/kg × 50% advance rate</p><div class="finance-checklist"><div><span class="check-circle">✓</span> Lot record created</div><div><span class="check-circle">✓</span> Grade confirmation recorded</div><div><span class="check-circle muted-check">○</span> Buyer bid acceptance required</div><div><span class="check-circle muted-check">○</span> Lender eligibility & approval</div></div><div class="finance-callout">ThreadGrade could package evidence for a lender or connect to an eligible TReDS/NBFC workflow. It cannot guarantee finance or treat a grade card as collateral by itself.</div></div></div>
+      </section>
+
+      <footer class="footer"><span>ThreadGrade <span class="footer-dot">•</span> Quest EYP concept prototype</span><span>Designed for demonstration <span class="footer-dot">•</span> <button id="footerAbout">About this demo</button></span></footer>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"><span>✓</span><div><b id="toastTitle">Done</b><small id="toastMessage">Action completed.</small></div></div>
+  <div class="modal-backdrop hidden" id="modalBackdrop"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" id="modalClose" aria-label="Close">×</button><div class="modal-mark">✦</div><h2 id="modalTitle">Lot passport</h2><p id="modalSubtitle">A traceable material record.</p><div id="passportContent"></div><div class="modal-actions"><button class="btn btn-secondary" id="copyLot">Copy lot details</button><button class="btn btn-primary" id="downloadPassport">Download record ↓</button></div><p class="modal-note">Prototype record · Not a certified test report or proof of independent verification.</p></div></div>
+  <div class="modal-backdrop hidden" id="helpBackdrop"><div class="modal help-modal" role="dialog" aria-modal="true" aria-labelledby="helpTitle"><button class="modal-close" id="helpClose" aria-label="Close">×</button><div class="modal-mark">✦</div><h2 id="helpTitle">About this prototype</h2><p>ThreadGrade demonstrates the proposed workflow from textile offcut intake to grading, routing and traceable lot records.</p><ul><li>All metrics, prices and model scores are illustrative.</li><li>AI grading, NIR testing, buyer auctions and lender integrations are not connected.</li><li>Human confirmation is required in the proposed workflow.</li><li>In a production version, evidence and quality checks would need validation.</li></ul><button class="btn btn-primary btn-full" id="helpDone">Got it</button></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
